@@ -1,0 +1,17 @@
+.login-fields {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.login-fields input,
+.login-fields button {
+  margin-bottom: 10px;
+}
+
+.btn {
+  font-weight: bolder;
+}
+h2 {
+  font-weight: bold;
+}

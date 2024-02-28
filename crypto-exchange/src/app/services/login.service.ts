@@ -13,18 +13,22 @@ export class LoginService {
       const storedPassword = JSON.parse(existingUser).password;
       return password === storedPassword;
     }
+
     return false;
   }
 
   createUser(username: string, password: string): void {
     const existingUser = localStorage.getItem(username);
     if (existingUser) {
-      alert('Wrong password.');
-
-      this.router.navigate(['']);
+      const storedPassword = JSON.parse(existingUser).password;
+      if (password === storedPassword) {
+        alert('Username already exists.');
+      } else {
+        alert('Wrong password.');
+      }
     } else {
       localStorage.setItem(username, JSON.stringify({ password }));
-      console.log('New User added!');
+      console.log('New user added!');
     }
   }
 }
