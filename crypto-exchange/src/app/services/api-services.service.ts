@@ -6,11 +6,12 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ApiServicesService {
-  private HistoricalDataUrl: 'https://rest.coinapi.io';
+  private HistoricalDataUrl = 'https://rest.coinapi.io/v1';
 
   constructor(private http: HttpClient) {}
 
-  getData(): Observable<any> {
-    return this.http.get<any>();
+  getHistoricalData(symbolId: string): Observable<any> {
+    const endpoint = `${this.HistoricalDataUrl}/ohlcv/${symbolId}/history`;
+    return this.http.get<any>(endpoint);
   }
 }
