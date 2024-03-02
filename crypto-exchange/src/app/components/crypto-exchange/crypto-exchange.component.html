@@ -80,7 +80,7 @@
 </nav>
 <app-currency-sites></app-currency-sites>
 <section>
-  <img *ngFor="let iconUrl of iconUrls" src="{{ iconUrl }}" alt="" />
+  <!-- <img *ngFor="let iconUrl of iconUrls" src="{{ iconUrl }}" alt="" /> -->
 </section>
 
 <ng-template #myModal let-modal>
@@ -96,12 +96,14 @@
     </button>
   </div>
   <div class="modal-body">
-    <form [formGroup]="optionFG">
-      <select class="form-control">
-        <option formControlName="assetId" *ngFor="let assetId of assetIds">
-          {{ assetId }}
-        </option>
-      </select>
-    </form>
+    <select class="form-control">
+      <option
+        id="optionText"
+        [value]="assetId"
+        *ngFor="let assetId of assetIds"
+      >
+        {{ assetId }}
+      </option>
+    </select>
   </div>
 </ng-template>

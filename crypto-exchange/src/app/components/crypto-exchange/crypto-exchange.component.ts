@@ -16,6 +16,8 @@ export class CryptoExchangeComponent implements OnInit {
   iconUrls: string[] = [];
   optionFG!: FormGroup;
 
+  selectedValue: string = '';
+
   @ViewChild('myModal') myModal: any;
 
   constructor(
@@ -37,8 +39,18 @@ export class CryptoExchangeComponent implements OnInit {
     modalRef.componentInstance.tab = tab;
   }
 
-  saveSelectedValue(selectedValue: string) {
-    this.tabs.push(selectedValue);
+  // saveSelectedValue(selectedValue: string) {
+  //   this.selectedValue = selectedValue;
+  // }
+
+  // saveSelectedValue(event: Event) {
+  //   const selectedValue = (event.target as HTMLSelectElement).value;
+  //   this.selectedValue = selectedValue;
+  // }
+
+  saveSelectedValue(selectedIndex: number) {
+    const selectedOption = this.assetIds[selectedIndex];
+    this.selectedValue = selectedOption;
   }
 
   get assetId() {
@@ -64,9 +76,9 @@ export class CryptoExchangeComponent implements OnInit {
     //   }
     // );
 
-    this.optionFG = new FormGroup({
-      assetId: new FormControl('', []),
-    });
+    // this.optionFG = new FormGroup({
+    //   assetId: new FormControl('', []),
+    // });
 
     this.apiService
       .getAssetsId()
