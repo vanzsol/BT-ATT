@@ -12,7 +12,11 @@ const routes: Routes = [
     component: CryptoExchangeComponent,
     canActivate: [loggedInGuard],
   },
-  { path: 'currencies', component: CurrencySitesComponent },
+  {
+    path: 'currencies',
+    component: CurrencySitesComponent,
+    canActivate: [loggedInGuard],
+  },
 ];
 
 @NgModule({

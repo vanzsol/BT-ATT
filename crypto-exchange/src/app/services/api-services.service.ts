@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class ApiServicesService {
   private apiUrl = 'https://rest.coinapi.io/v1';
 
-  private apiKey = '4DD949E7-4D66-4C24-940B-A4F68C41D9F9';
+  private apiKey = '61678C2C-E670-4CD2-865A-1F38DB37CB7B';
 
   constructor(private http: HttpClient) {}
 
@@ -46,6 +46,15 @@ export class ApiServicesService {
     };
 
     return this.http.get(`${this.apiUrl}/assets`, {
+      headers,
+    });
+  }
+  getAssetsIcon(): Observable<any> {
+    const headers = {
+      'X-CoinAPI-Key': this.apiKey,
+    };
+
+    return this.http.get(`${this.apiUrl}/assets/icons/32`, {
       headers,
     });
   }

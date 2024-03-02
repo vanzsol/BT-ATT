@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { distinct } from 'rxjs';
+import { Observable } from 'rxjs';
 import { ExchangeData } from 'src/app/models/exchangeData.model';
 import { ApiServicesService } from 'src/app/services/api-services.service';
 
@@ -19,7 +19,6 @@ export class CurrencySitesComponent implements OnInit {
     //     console.log(data);
     //   });
     // }
-
     // this.apiService.getSymbols().subscribe((data) => {
     //   this.exchangeSymbols = data;
     // });
@@ -34,13 +33,22 @@ export class CurrencySitesComponent implements OnInit {
     //     console.error('Hiba történt a lekérdezés során:', error);
     //   }
     // );
-    this.apiService.getAssetsId().subscribe(
-      (data) => {
-        this.exchangeIds = data.map((item: ExchangeData) => item.name).sort();
-      },
-      (error) => {
-        console.error('Hiba történt a lekérdezés során:', error);
-      }
-    );
+    //   this.apiService.getAssetsId().subscribe(
+    //     (data) => {
+    //       this.exchangeIds = data.map((item: ExchangeData) => item.url).sort();
+    //     },
+    //     (error) => {
+    //       console.error('Hiba történt a lekérdezés során:', error);
+    //     }
+    //   );
+    // }
+    // this.apiService.getAssetsIcon().subscribe(
+    //   (data) => {
+    //     this.exchangeIds = data.map((item: ExchangeData) => item.url).sort();
+    //   },
+    //   (error) => {
+    //     console.error('Hiba történt a lekérdezés során:', error);
+    //   }
+    // );
   }
 }

@@ -1,3 +1,56 @@
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+  <a class="navbar-brand text-light fs-5 fw-1">Crypto-exchange</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNav"
+    aria-controls="navbarNav"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon text-light"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link text-light">BITCOIN</a>
+      </li>
+      <li class="nav-item" *ngFor="let tab of tabs">
+        <a class="nav-link text-light" (click)="openModal(tab)">{{ tab }}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-light" (click)="addTab()">+</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<app-currency-sites></app-currency-sites>
+<section>
+  <img *ngFor="let iconUrl of iconUrls" src="{{ iconUrl }}" alt="" />
+</section>
+
+<ng-template #myModal let-modal>
+  <div class="modal-header bg-primary">
+    <h4 class="modal-title text-light fs-3">Select crypto-currency</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss()"
+    >
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <select class="form-control">
+      <option *ngFor="let assetId of assetIds">
+        {{ assetId }}
+      </option>
+    </select>
+  </div>
+</ng-template> -->
+
 <nav class="navbar navbar-expand-lg navbar-light bg-primary">
   <a class="navbar-brand text-light fs-5 fw-1">Crypto-exchange</a>
   <button
@@ -14,10 +67,7 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link text-light">Bitcoin</a>
-        <!-- <a class="nav-link text-light" (click)="openModal('Bitcoin')"
-          >Bitcoin</a
-        > -->
+        <a class="nav-link text-light">BITCOIN</a>
       </li>
       <li class="nav-item" *ngFor="let tab of tabs">
         <a class="nav-link text-light" (click)="openModal(tab)">{{ tab }}</a>
@@ -28,6 +78,10 @@
     </ul>
   </div>
 </nav>
+<app-currency-sites></app-currency-sites>
+<section>
+  <img *ngFor="let iconUrl of iconUrls" src="{{ iconUrl }}" alt="" />
+</section>
 
 <ng-template #myModal let-modal>
   <div class="modal-header bg-primary">
@@ -42,10 +96,12 @@
     </button>
   </div>
   <div class="modal-body">
-    <select class="form-control">
-      <option>Crypto 2</option>
-      <option>Crypto 3</option>
-      <option>Crypto 4</option>
-    </select>
+    <form [formGroup]="optionFG">
+      <select class="form-control">
+        <option formControlName="assetId" *ngFor="let assetId of assetIds">
+          {{ assetId }}
+        </option>
+      </select>
+    </form>
   </div>
 </ng-template>
