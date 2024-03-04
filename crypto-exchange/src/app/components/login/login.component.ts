@@ -10,8 +10,6 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
-  isLoggedIn: boolean = false;
-
   constructor(private router: Router, private loginServices: LoginService) {}
 
   login(): void {
@@ -23,8 +21,7 @@ export class LoginComponent implements OnInit {
         )
       ) {
         console.log('Succesful Login');
-        this.isLoggedIn = true;
-
+        this.loginServices.login(this.username?.value);
         this.router.navigate(['crypto-exchange']);
       } else {
         this.loginServices.createUser(

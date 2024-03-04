@@ -1,11 +1,23 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoginService {
-  constructor(private router: Router) {}
+  constructor() {}
+
+  private readonly LOGGED_IN_KEY = 'isLoggedIn';
+
+  login(username: string) {
+    localStorage.setItem(this.LOGGED_IN_KEY, 'true');
+    console.log(`User ${username} logged in.`);
+    localStorage.setItem('username', username);
+  }
+
+  logout() {
+    localStorage.removeItem(this.LOGGED_IN_KEY);
+    console.log('User logged out.');
+  }
 
   checkCredentials(username: string, password: string): boolean {
     const existingUser = localStorage.getItem(username);
@@ -30,5 +42,9 @@ export class LoginService {
       localStorage.setItem(username, JSON.stringify({ password }));
       console.log('New user added!');
     }
+  }
+
+  isAuthenticated(): boolean {
+    return localStorage.getItem(this.LOGGED_IN_KEY) === 'true';
   }
 }

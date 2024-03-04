@@ -1,4 +1,16 @@
 <!-- <div *ngFor="let exchangeId of exchangeIds">{{ exchangeId }}</div> -->
-<!-- <div *ngFor="let exchangeId of exchangeIds">
-  <img src="{{ exchangeId }}" alt="" />
-</div> -->
+<!-- <section class="d-flex flex-wrap">
+  <div *ngFor="let exchangeId of exchangeIds">
+    <img src="{{ exchangeId }}" alt="" />
+  </div>
+</section> -->
+<div class="row">
+  <section class="d-flex flex-column">
+    <div class="d-inline-block" *ngFor="let exchangeId of assetIds">
+      {{ exchangeId }}
+    </div>
+    <div class="d-inline-block" *ngFor="let iconUrl of iconUrls">
+      <img src="{{ iconUrl }}" alt="" />
+    </div>
+  </section>
+</div>
