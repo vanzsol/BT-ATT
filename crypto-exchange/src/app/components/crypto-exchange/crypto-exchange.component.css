@@ -15,3 +15,7 @@ img {
 .navbar-toggler-icon {
   color: white;
 }
+
+.close {
+  size: 1rem;
+}

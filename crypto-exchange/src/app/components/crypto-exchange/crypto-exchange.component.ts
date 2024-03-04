@@ -41,6 +41,20 @@ export class CryptoExchangeComponent implements OnInit {
     localStorage.setItem('userTabs', JSON.stringify(this.tabs));
   }
 
+  closeTab(tab: string) {
+    const tabIndex = this.tabs.indexOf(tab);
+    if (tabIndex !== -1) {
+      this.tabs.splice(tabIndex, 1);
+      const savedUsername = localStorage.getItem('username');
+      if (savedUsername) {
+        localStorage.setItem(
+          `userTabs_${savedUsername}`,
+          JSON.stringify(this.tabs)
+        );
+      }
+    }
+  }
+
   logout() {
     this.loginServices.logout();
     this.router.navigate(['']);
