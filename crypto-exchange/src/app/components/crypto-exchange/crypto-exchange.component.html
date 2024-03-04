@@ -15,10 +15,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav">
         <li
-          class="nav-item border border-light rounded mx-2"
+          class="nav-item tabs border border-light rounded mx-2"
           *ngFor="let tab of tabs"
         >
-          <a class="nav-link text-light"
+          <a class="nav-link text-light a-tabs"
             >{{ tab }}
             <button
               class="close btn btn-sm btn-outline-light ms-2"
@@ -31,7 +31,12 @@
         </li>
         <li class="nav-item">
           <a class="nav-link text-light" (click)="openModal()"
-            ><button class="btn btn-sm btn-outline-light">+</button></a
+            ><button
+              class="btn btn-sm btn-outline-light"
+              title="Add Crypto-tab"
+            >
+              +
+            </button></a
           >
         </li>
         <li class="nav-item logout" style="position: absolute; right: 0rem">
